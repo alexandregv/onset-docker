@@ -12,6 +12,7 @@ RUN apt-get update -y \
  && apt-get install -y \
       ca-certificates \
       lib32gcc1 \
+      libmariadbclient-dev \
       locales \
       openssl \
  && apt-get clean \
@@ -22,6 +23,9 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && loca
 ENV LANG en_US.UTF-8 \
     LANGUAGE en_US:en \ 
     LC_ALL en_US.UTF-8    
+
+# Make libmariadbclient.so.18 available in Debian buster
+RUN ln -s /usr/lib/x86_64-linux-gnu/libmariadbclient.so /usr/lib/x86_64-linux-gnu/libmariadbclient.so.18
 
 # Create and use "onset" user/group
 RUN groupadd -r onset \
