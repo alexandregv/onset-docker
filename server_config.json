@@ -1,0 +1,23 @@
+{
+    "servername": "My local server",
+    "gamemode": "Do what you want",
+    "website_url": "https://playonset.com",
+    "ipaddress": "0.0.0.0",
+    "port": 7777,
+    "maxplayers": 25,
+    "password": "",
+    "timeout": 15000,
+    "iplimit": 5,
+    "masterlist": true,
+    "plugins": [
+            "mariadb"
+    ],
+    "packages": [
+    ],
+    "stream_distance": 12000.0,
+    "stream_update_rate": 0.05,
+    "voice": true,
+    "voice_sample_rate": 24000,
+    "voice_distance": 4000.0,
+    "voice_spatialization": true
+}

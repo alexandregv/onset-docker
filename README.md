@@ -3,7 +3,7 @@ Onset game server dockerized.
 Check it on the [DockerHub](https://hub.docker.com/r/alexandregv/onset-server).  
 
 ## Usage (docker-compose)
-Just run `docker-compose up -d`.  
+Just run `docker-compose up -d`. Make sure you have a [server_config.json](https://dev.playonset.com/wiki/server_config).  
 You can check the logs with `docker-compose logs -f server`.
 
 ## Usage (docker only)
