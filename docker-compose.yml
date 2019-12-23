@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  server:
+    image: alexandregv/onset-server
+    build: .
+    restart: always
+    volumes:
+      - $PWD/server_config.json:/Steam/OnsetServer/server_config.json
+      - $PWD/packages:/Steam/OnsetServer/packages
+    ports:
+      - '7777:7777/udp'
+      - '7776:7776/udp'
+      - '7775:7775/tcp'
