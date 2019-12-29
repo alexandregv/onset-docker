@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:9
 
 LABEL maintainer="contact@alexandregv.fr"
 
@@ -24,8 +24,8 @@ ENV LANG en_US.UTF-8 \
     LANGUAGE en_US:en \ 
     LC_ALL en_US.UTF-8    
 
-# Make libmariadbclient.so.18 available in Debian buster
-RUN ln -s /usr/lib/x86_64-linux-gnu/libmariadbclient.so /usr/lib/x86_64-linux-gnu/libmariadbclient.so.18
+# Make libmariadbclient.so.18 available in Debian buster (10)
+#RUN ln -s /usr/lib/x86_64-linux-gnu/libmariadbclient.so /usr/lib/x86_64-linux-gnu/libmariadbclient.so.18
 
 # Create and use "onset" user/group
 RUN groupadd -r onset \
