@@ -2,9 +2,10 @@ version: '3'
 
 services:
   server:
-    image: alexandregv/onset-server
+    image: alexandregv/onset-server:latest
     build: .
     restart: always
+    #user: root # Uncomment this if you have problems with permissions
     environment:
       MYSQL_WAIT: ${MYSQL_WAIT-1}
       MYSQL_HOST: ${MYSQL_HOST-db}
@@ -12,8 +13,15 @@ services:
       MYSQL_USER: ${MYSQL_USER-onset}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD-onset}
     volumes:
-      - $PWD/server_config.json:/Steam/OnsetServer/server_config.json
-      - $PWD/packages:/Steam/OnsetServer/packages
+     # Plugins and packages folders
+      - ./plugins:/Steam/OnsetServer/plugins
+      - ./packages:/Steam/OnsetServer/packages
+     # Server config
+      - ./server_config.json:/Steam/OnsetServer/server_config.json
+      - ./weapons.json:/Steam/OnsetServer/weapons.json
+     # Sandbox files
+      - ./world.json:/Steam/OnsetServer/world.json
+      - ./schematics.json:/Steam/OnsetServer/schematics.json
     ports:
       - '7777:7777/udp'
       - '7776:7776/udp'

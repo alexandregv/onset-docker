@@ -1,0 +1,7 @@
+{
+	"author": "1B0Y (Jack) @ summitroleplay.com",
+	"version": "1.1",
+	"server_scripts": [
+		"manager.lua"
+	]
+}
