@@ -5,6 +5,12 @@ services:
     image: alexandregv/onset-server
     build: .
     restart: always
+    environment:
+      MYSQL_WAIT: ${MYSQL_WAIT-1}
+      MYSQL_HOST: ${MYSQL_HOST-db}
+      MYSQL_DATABASE: ${MYSQL_DATABASE-onset}
+      MYSQL_USER: ${MYSQL_USER-onset}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD-onset}
     volumes:
       - $PWD/server_config.json:/Steam/OnsetServer/server_config.json
       - $PWD/packages:/Steam/OnsetServer/packages
@@ -12,3 +18,18 @@ services:
       - '7777:7777/udp'
       - '7776:7776/udp'
       - '7775:7775/tcp'
+
+  db:
+    image: mariadb:10.4
+    restart: always
+    environment:
+      MYSQL_INITDB_SKIP_TZINFO: ${MYSQL_INIT_DB_SKIP_TZINFO-1}
+      MYSQL_DATABASE: ${MYSQL_DATABASE-onset}
+      MYSQL_USER: ${MYSQL_USER-onset}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD-onset}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD-onset}
+    volumes:
+       - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
